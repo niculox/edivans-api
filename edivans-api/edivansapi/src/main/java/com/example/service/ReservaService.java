@@ -37,6 +37,8 @@ public class ReservaService {
         Reserva reserva = new Reserva();
         reserva.setViagem(viagem);
         reserva.setPassageiro(Passageiro);
+        viagem.setVagas_ocupadas(vagasOcupadas + 1);
+        viagemRepositoy.save(viagem);
         
         return reservaRepository.save(reserva);
     }
@@ -56,5 +58,5 @@ public class ReservaService {
         return reservaRepository.findById(id_reserva)
             .orElseThrow(() -> new RuntimeException("Reserva não encontrada!"));
     }
-    
+
 }
