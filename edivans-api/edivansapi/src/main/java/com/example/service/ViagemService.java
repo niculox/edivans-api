@@ -11,8 +11,9 @@ public class ViagemService {
     @Autowired
     private ViagemRepositoy viagemRepositoy;
 
-    public Viagem criarViagem(Viagem viagem){
-        return viagemRepositoy.save(viagem);
+    public Viagem criarViagem(){
+        Viagem viagem = viagemRepositoy.save(new Viagem());
+        return viagem;
     }
 
     public void editarViagem(Viagem viagem){
@@ -30,5 +31,5 @@ public class ViagemService {
         return viagemRepositoy.findById(id_viagem)
             .orElseThrow(() -> new RuntimeException("Viagem não encontrada!"));
     }
-    
+
 }
